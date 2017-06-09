@@ -25,10 +25,11 @@ var app = express();
 app.listen(port);
 
 app.get("/",function(req,res){
+    res.writeHead({'Content-Type':'text/html'});
     fs.createReadStream("./index.html").pipe(res);
 });
 
-app.post('/form-submit' , urlencodedParser , function(req,res){
+app.post('/' , urlencodedParser , function(req,res){
     if(req.body) res.send("HAHAHAHA");
     console.log(req.body);
 });
